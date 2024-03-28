@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Company Home
+    </title>
+   
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script src='https://cdn.jsdelivr.net/npm/vue@3.0.2/dist/vue.global.js'></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="global.js"></script>
+
+
+</head>
+
+<body class="d-flex flex-column h-100">
+  <!--Nav Bar-->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="z-index:1000;font-size: larger;font-weight: 600;" >
+    <div class="container px-6 ">
+    <a class="navbar-brand " href="#"style="margin:20px"><img src="img/logo.png" class="logo mr-3" alt="" />
+    
+      <span style="color: black;">Internapp</span></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" >
+      <div class="dropdown">
+        <ul class="navbar-nav pull-right me-auto mb- mb-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="companyhome.html"style="color: black; margin: 5px;">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="companyaboutus.html"style="color: black;black: 5px;">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="basichome.html"style="color: black;black: 5px;">Logout</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </nav>    
+<!-- Header-->
+<header style="background-color: white;">
+<div class="container px-6 my-5">
+  <div class="row align-items-center justify-content-sm-start">
+      <div class="col-7">
+          <div>
+              <h2 class="display-5 fw-bolder text-black mb-2">Match with the Perfect Intern <i>TODAY!</i></h2>
+              <p class="lead fw-normal text-black mb-5">Our website is always 24H updating the job listings posted by the companies so be rest assured that you are getting the newest job positions FASTER than the other applications</p>
+          </div>
+      </div>
+      <div class="col-5">
+        <img href='https://www.freepik.com/vectors/business-cartoon' src="img/Business team looking for new people.jpg" class="w-100 h-100">
+      </div>
+  </div>
+</div>
+</header>
+<div>
+
+<!--1st CONTENT TAB 1-->
+<div id="app" class="container">
+  <ul class="nav nav-tabs navtop m-4 justify-content-end" id="target">
+    <li class="nav-item">
+        <a class="nav-link active" href="#menu1" data-toggle="tab">All Listings</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#menu2" data-toggle="tab">Applicants</a>
+    </li>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#menu4" data-toggle="tab">Add Listing</a>
+  </li>
+  </ul>
+  <div class="tab-content float-center">
+    <div class="tab-pane active" role="tabpanel" id="menu1">
+  <!-- GENERATE JOB AFTER SUMBIT-->
+  <div id="jobdata"></div>
+  
+    
+<!--Listings-->
+<div class="row mb-3" id="4">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col mx-auto">
+        <!-- List group-->
+        <ul class="list-group shadow">
+          <!-- list group item-->
+          <li v-for="job in jobs" class="list-group-item">
+          <!-- Custom content-->
+            <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+              <div class="media-body order-2 order-lg-1">
+                <h5 class="mt-0 font-weight-bold mb-2">{{job.jobName}}</h5>
+                <p class="font-italic text-muted mb-0 small">Company ID: {{job.companyID}} <br> Job ID: {{job.jobID}}</p>
+                <p class="text-muted mb-0 small">{{job.jobDesc}}</p>
+                <div class="d-flex mt-1">
+                  <!-- <h6 class="font-weight-bold my-2">$120.00</h6> -->
+                  <button
+                    type="button"
+                    class="button-54 mt-2 mr-2"
+                    data-toggle="modal"
+                    data-target="#exampleModal4"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    class="button-54 mt-2 mr-2"
+                    @click="deleteJob(job.jobID)"
+                    data-target="#exampleModal3"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div><img src="./img/5378419.jpg" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+              
+            </div>
+            <!-- End -->
+          </li>
+        <!-- End -->
+        </ul>
+        <!-- End -->
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+ <!--applications--> 
+
+<div class="tab-pane" role="tabpanel" id="menu2"> 
+    <div class="row mb-3" id="4">
+      <div class="container py-5">
+        <div class="col mx-auto">
+          <ul class="list-group shadow">
+            <li v-for="app in applications" class="list-group-item">
+              <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                <div class="media-body order-2 order-lg-1">
+                  <h5 class="mt-0 font-weight-bold mb-2">{{app.applicationID}}</h5>
+                  <p class="font text-muted mb-0 small"><b>Job ID:</b> {{app.jobID}}</p>
+                  <p class="font text-muted mb-0 small"><b>StudentID:</b> {{app.studentID}}</p>
+                  <p class="font text-muted mb-0 small"><b>Status:</b> {{app.applicationStatus}}</p>
+                  <p class="font-italic text-muted mb-0 small">{{app.coverletter}}</p>
+                  <br>
+                  <button
+                    type="button"
+                    class="button-54 mr-2"
+                    @click="updateStatus(1, app.applicationID)"
+                  >
+                    Accept
+                  </button>
+                  <button
+                    type="button"
+                    class="button-54 mr-2"
+                    @click="updateStatus(0, app.applicationID)"
+                  >
+                    Reject
+                  </button>
+                </div><img src="./img/Cartoon business woman looking through giant to do list.jpg" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--create listing-->
+  <div class="tab-pane" role="tabpanel" id="menu4">
+    <div>
+      <div class="container">
+        <div class="section-contact">
+          <!-- <div class="row justify-content-center"> -->
+            <!-- <div class="col-12 col-lg-10 col-xl-8"> -->
+              <!-- <div class="header-section text-center"> -->
+                <!-- <h2 class="title">New Listing
+                  <span class="dot"></span>
+                  <span class="big-title">CREATE</span>
+                </h2>  -->
+                <!-- <p class="description">Please fill in accordingly and ensure that all details are correct! 😁</p> -->
+              <!-- </div> -->
+            <!-- </div> -->
+          <!-- </div> -->
+          <div class="form-contact">
+            <form>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="single-input">
+                    <label class="mr-3">Company ID</label>
+                    <input v-model="companyID" type="number" id="companyID"
+                    name="companyID" placeholder="123">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="single-input">
+                    <label class="mr-3">Job Title</label>
+                    <input v-model="jobName" type="text" id="jobtitle"
+                    placeholder="Personal Assistant"
+                    name="jobtitle">
+                  </div>
+                </div>
+                
+                <div class="col-12">
+                  <div class="single-input">
+                    <label class="mr-3">Job Description</label>
+                    <textarea v-model="jobDesc" placeholder="Hardworking. Responsible. 24/7 Available."
+                    id="jobdescription"
+                    name="jobdescription"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="single-input">
+                    <label class="mr-3">Post Date</label>
+                    <input v-model="postDate" name="postdate" id="postdate" type="date">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="single-input">
+                    <label class="mr-3">Deadline</label>
+                    <input name="deadline" id="deadline" type="date" v-model="deadline">
+                  </div>
+                </div>
+                <div class="col-12 mt-3 d-flex justify-content-end">
+                  <button type="button" @click="addListing" class="button-54 mb-2">Submit</button>
+                </div>
+                <div class="alert alert-success mt-3" role="alert" v-if="listingAdded">
+                  The listing has been successfully created!
+                </div>
+                <div class="alert alert-danger mt-3" role="alert" v-if="addListingError!=''">
+                    There is a problem adding this new listing:<br>
+                    {{ addListingError }}
+                    <br>
+                </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    <!-- / END CONTACT SECTION -->
+    </div>
+  </div>
+</div>
+
+<!-- Modal No real data 4-->
+<div
+class="modal fade"
+id="exampleModal4"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Edit Details</h5>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form action="" id="login-form" class="mb-2">
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="jobID"></label>
+          <input
+            v-model="jobID"
+            type="number"
+            class="form-control"
+            id="jobID"
+            placeholder="Job ID"
+          />
+        </div>
+     
+          <div class="form-group">
+            <label for="companyID"></label>
+            <input
+              v-model="companyID"
+              type="number"
+              class="form-control"
+              id="companyID"
+              placeholder="Company ID"
+            />
+          </div>
+   
+        <div class="form-group">
+          <label for="jobtitle"></label>
+          <input
+            v-model="jobName"
+            type="text"
+            class="form-control"
+            id="jobtitle"
+            placeholder="Job Title"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="jobdescription"></label>
+          <textarea
+            v-model="jobDesc"
+            rows="4"
+            cols="20"
+            class="form-control"
+            id="jobdescription"
+            placeholder="Job Description"
+          ></textarea
+          >
+        </div>
+        <div class="form-group">
+          <label for="postdate">Post Date</label>
+          <input v-model="postDate"
+            type="date"
+            class="form-control"
+            id="postdate"
+          />
+        </div>
+        <div class="form-group">
+          <label for="deadline">Deadline</label>
+          <input v-model="deadline"
+            type="date"
+            class="form-control"
+            id="deadline"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="button-54"
+          data-dismiss="modal"
+        >
+          Close
+        </button>
+        <button type="button" @click="editListing" class="button-54">
+          Save changes
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="background-color: rgb(219, 216, 216)">
+  
+</div>
+
+<!-- Footer-->
+<footer class="bg-dark py-4 mt-auto ">
+  <div class="container">
+      <div class=" row align-items-center justify-content-between flex-column flex-sm-row">
+          <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Pudding 2022</div></div>
+          <div class="col-auto ">
+              <a class="link-light small text-white" href="#!">Privacy</a>
+              <span class="text-white mx-1">&middot;</span>
+              <a class="link-light small text-white " href="#!">Terms</a>
+              <span class="text-white mx-1">&middot;</span>
+              <a class="link-light small text-white" href="#!">Contact</a>
+          </div>
+      </div>
+  </div>
+</footer>
+
+<script>
+const job_URL = "http://127.0.0.1:5003/job";
+// const application_URL = "http://localhost:8000/api/v1/application";
+const application_URL = "http://127.0.0.1:5001/application";
+const internship_URL = "http://127.0.0.1:5200/create_job";
+// const application_URL = "http://localhost:5001/application";
+
+const app = Vue.createApp({
+    data() {
+        return {
+            message: "There is a problem posting data, please try again later.",
+            "jobs": [],
+            "applications":[],
+            jobID: "",
+            companyID: "",
+            applicationID: "",
+            jobDesc: "",
+            jobName: "",
+            postDate: "", 
+            deadline: "",
+            viewAllJobsError: "",
+            addListingError: "",
+            selectedJob: true,
+            listingAdded: false,
+            listingEdited: false,
+            statusUpdated: false
+        };
+      },
+      methods: {
+        getAllJobs(){
+          const response =
+              fetch(job_URL)
+                  .then(response => response.json())
+                  .then(data => {
+                      console.log(response);
+                      if (data.code === 404) {
+                          // no job in db
+                          this.message = "Hi";
+                        
+                      } else {
+                          console.log("Jobs connected");
+                          console.log("A");
+                          var string1 = JSON.stringify(data.data);
+                          var parsed = JSON.parse(string1);
+                          this.jobs = parsed;
+
+                          
+                          
+                      }
+                  })
+                .catch(error => {
+                    // Errors when calling the service; such as network error, 
+                    // service offline, etc
+                    console.log(this.message + error);
+
+                })
+              },
+
+          addListing () {
+            event.preventDefault()
+            // reset data
+            this.listingAdded = false;
+            this.addListingError = "";
+            let header_json = null;
+            let data = JSON.stringify({
+                // "jobID": this.jobID,
+                "companyID": this.companyID,
+                "jobName": this.jobName,
+                "postDate":this.postDate,
+                "jobDesc": this.jobDesc,
+                "deadline": this.deadline
+              });
+              header_json = {"Content-type" : "application/json"};
+                              
+              fetch(`${internship_URL}`,
+                {
+                    method: "POST",
+                    headers: header_json,
+                    body: data
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // 3 cases
+                    switch (data.code) {
+                        case 201:
+                            this.listingAdded = true;
+                            alert("Listing added. Redirecting in a second...");
+                            setTimeout(function(){
+                              window.location = "companyhome.html";
+                            }, 500)
+                            break;
+                        case 400:
+                            this.addListingError = data.message;
+                        case 500:
+                            this.addListingError = data.message;
+                            break;
+                        default:
+                            throw `${data.code}: ${data.message}`;
+                    }
+                })
+            },
+            
+            editListing(){
+              console.log("in edit alr");
+              event.preventDefault()
+              // reset data
+              this.listingEdited = false;
+              this.addListingError = "";
+              let header_json = null;
+              let data = JSON.stringify({
+                  "jobID": this.jobID,
+                  "companyID": this.companyID,
+                  "jobName": this.jobName,
+                  "postDate":this.postDate,
+                  "jobDesc": this.jobDesc,
+                  "deadline": this.deadline
+                });
+                header_json = {"Content-type" : "application/json"};
+                                
+                fetch(`${job_URL}/${this.jobID}`,
+                  {
+                      method: "PUT",
+                      headers: header_json,
+                      body: data
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                      console.log(data);
+                      result = data.data;
+                      console.log(result);
+                      // 3 cases
+                      switch (data.code) {
+                          case 201:
+                              this.listingEdited = true;
+                              alert("Listing edited. Redirecting in a second...");
+                              setTimeout(function(){
+                                window.location = "companyhome.html";
+                              }, 500)
+                              break;
+                          case 400:
+                              this.addListingError = data.message;
+                          case 500:
+                              this.addListingError = data.message;
+                              break;
+                          default:
+                              throw `${data.code}: ${data.message}`;
+                      }
+                  })
+            },
+
+
+            deleteJob(jobID) {
+                if (window.confirm("Are you sure you want to delete?") == true) {
+                  let jsonData = JSON.stringify ({ jobID: jobID })
+                      const response =
+                        fetch(`${job_URL}/${jobID}`,
+                        {
+                            method: "DELETE",
+                            headers: {
+                                "Content-type": "application/json"
+                            },
+                            body: jsonData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(response);
+                            if (data.code === 404) {
+                                // no book in db
+                                this.message = data.message;
+                            } else {
+                                this.message = "job deleted"
+                            }
+                        })
+                        .catch(error => {
+                            console.log(this.message + error);
+
+                        });
+                        
+                      }
+                  },
+
+                  getAllApplications(){
+                    const response =fetch(application_URL)
+                          .then(response => response.json())
+                          .then(data => {
+                        console.log(response);
+                        if (data.code === 404) {
+                            // no application in db
+                            this.message = data.message;
+                          
+                        } else {
+                            console.log("Applications connected")
+                            this.applications = data.data.jobs;
+                            console.log(data)
+                        }
+                    })
+                    .catch(error => {
+                        // Errors when calling the service; such as network error, 
+                        // service offline, etc
+                        console.log(this.message + error);
+                    })
+                  },
+
+                  updateStatus(state, appID){
+                    console.log(typeof(state))
+                    event.preventDefault();
+                    let appStatus = "Rejected";
+                    if (state){
+                      appStatus = "Approved";
+                    }
+                    // reset data
+                    this.statusUpdated = false;
+                    this.addListingError = "";
+                    let header_json = null;
+                    let data = JSON.stringify({
+                      "applicationID": appID,
+                      "applicationStatus": appStatus
+                    });
+                    header_json = {"Content-type" : "application/json"};
+                                    
+                    fetch(`${application_URL}/${appID}`,
+                      {
+                          method: "PUT",
+                          headers: header_json,
+                          body: data
+                      })
+                      .then(response => response.json())
+                      .then(data => {
+                          console.log(data);
+                          result = data.data;
+                          console.log(result);
+                          // 3 cases
+                          switch (data.code) {
+                              case 200:
+                                  this.statusUpdated = true;
+                                  alert("Status edited. Redirecting in a second...");
+                                  setTimeout(function(){
+                                    window.location = "companyhome.html";
+                                  }, 500)
+                                  break;
+                              case 400:
+                                  this.addListingError = data.message;
+                              case 500:
+                                  this.addListingError = data.message;
+                                  break;
+                              default:
+                                  throw `${data.code}: ${data.message}`;
+                          }
+                      })
+                  },
+
+      },
+      
+      created () {
+        // on Vue instance created, load the book list
+        this.getAllJobs();
+        this.getAllApplications();
+        // this.getAllHistory();
+        
+      }
+  });
+const vm = app.mount('#app');
+</script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+   
+</body>
+</html>

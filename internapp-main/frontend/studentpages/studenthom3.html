@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Student Home
+    </title>
+   
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src='https://cdn.jsdelivr.net/npm/vue@3.0.2/dist/vue.global.js'></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="global.js"></script>
+</head>
+
+<body class="d-flex flex-column h-100">
+  <!--Nav Bar-->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="z-index:1000;font-size: larger;font-weight: 600;" >
+    <div class="container px-6 ">
+    <a class="navbar-brand " href="#"style="margin:20px"><img src="../img/logo.png" class="logo" alt="" />
+      <span style="color: black;">Internapp</span></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" >
+      <div class="dropdown">
+        <ul class="navbar-nav pull-right me-auto mb- mb-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="studenthom3.html"style="color: black; margin: 5px;">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="studentabout.html"style="color: black;black: 5px;">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="basichome.html"style="color: black;black: 5px;">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>    
+
+<!-- Header-->
+<header style="background-color: white;">
+  <div class="container px-6 my-5">
+    <div class="row align-items-center justify-content-sm-start">
+        <div class="col-7">
+            <div>
+                <h2 class="display-5 fw-bolder text-black mb-2">Match with the Perfect Company <i>TODAY!</i></h2>
+                <p class="lead fw-normal text-black mb-5">Our website is always 24H updating the job listings posted by the companies so be rest assured that you are getting the newest job positions FASTER than the other applications</p>
+            </div>
+        </div>
+        <div class="col-5">
+          <img href='https://www.freepik.com/vectors/business-cartoon' src="../img/Business team looking for new people.jpg" class="w-100 h-100">
+        </div>
+    </div>
+  </div>
+  </header>
+<div>
+
+
+<!-- Pills content -->
+<div id="app" class="container">
+  <ul class="nav nav-tabs navtop m-4 justify-content-end" id="target">
+      <li class="nav-item">
+          <a class="nav-link active" href="#menu1" data-toggle="tab">All Internships</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#menu4" data-toggle="tab">Check Status</a>
+      </li>
+  </ul>
+
+  <div class="tab-content float-center">
+    <div class="tab-pane active" role="tabpanel" id="menu1">
+        <div class="row mb-3"id="4">
+            <div class="col mx-auto">
+                <div v-for="job in jobs" class="list-group-item">
+                    <div class="card-body">
+                      <h5 class="font-italic text-muted mb-0 small">
+                        Company ID: {{job.companyID}}
+                      </h5>
+                      <p class="font-italic text-muted mb-0 small">
+                        Job ID: {{job.jobID}}
+                      </p>
+                      <p class="text-muted mb-0 small"><b>Job Title:</b> {{job.jobName}}</p>
+                      <p class="text-muted mb-0 small">
+                          <b>Job Description:</b>{{job.jobDesc}}
+                      </p>
+                      <p class="text-muted mb-0 small"><b>Deadline:</b>{{job.deadline}}</p>
+                      <button
+                          type="button"
+                          class="button-54 mt-2 mr-2"
+                          data-toggle="modal"
+                          data-target="#exampleModal4"
+                      >
+                          Apply
+                      </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--4th CONTENT TAB 4-->
+    <div class="tab-pane" role="tabpanel" id="menu4">
+        <div class="row justify-content-end">
+          <div class="section-contact">
+            <div class="form-contact">
+              <form>
+                <div class="row">
+                  <div class="single-input">
+                      <input v-model="studentID"
+                      type="text"
+                      
+                      placeholder="Enter your student ID"
+                      id="studentID"
+                      name="studentID"
+                      />
+                  </div>
+                  <div class="mx-4 single-input">
+                      <button
+                          type="button"
+                          class="button-54 mb-3"
+                          @click="getStatus"
+                      >
+                          Enter
+                      </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div v-for="status in statuses" class="list-group-item" >
+            <div class="card-body">
+              <h5 class="font-italic text-muted mb-0 small"> {{status.applicationID}}</h5>
+              <p class="text-muted mb-0 small"><b>Job ID:</b> {{status.jobID}} </p>
+              <p class="text-muted mb-0 small">
+                  <b>Application Status</b> {{status.applicationStatus}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal No real data 4-->
+    <div
+    class="modal fade"
+    id="exampleModal4"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Application Details</h5>
+        <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+        >
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form action="" id="login-form" class="mb-2">
+        <div class="modal-body">
+        
+            <div class="form-group">
+            <label for="companyID">Company ID</label>
+            <input
+                v-model="companyID"
+                type="number"
+                class="form-control"
+                id="companyID"
+            />
+            </div>
+
+            <div class="form-group">
+            <label for="studentID">Student ID</label>
+            <input
+                v-model="studentID"
+                type="number"
+                class="form-control"
+                id="studentID"
+            />
+            </div>
+
+            <div class="form-group">
+            <label for="jobID">Job ID</label>
+            <input
+                v-model="jobID"
+                type="number"
+                class="form-control"
+                id="jobID"
+            />
+            </div>
+        <div class="form-group">
+            <label for="letter">Cover Letter</label>
+            <textarea
+            v-model="letter"
+            rows="4"
+            cols="20"
+            class="form-control"
+            id="letter"
+            ></textarea
+            >
+        </div>
+        </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+        >
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" @click="addListing" data-dismiss="modal">
+          Apply
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer-->
+<footer class="bg-dark py-4 mt-auto ">
+  <div class="container">
+      <div class=" row align-items-center justify-content-between flex-column flex-sm-row">
+          <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Pudding 2022</div></div>
+          <div class="col-auto ">
+              <a class="link-light small text-white" href="#!">Privacy</a>
+              <span class="text-white mx-1">&middot;</span>
+              <a class="link-light small text-white " href="#!">Terms</a>
+              <span class="text-white mx-1">&middot;</span>
+              <a class="link-light small text-white" href="#!">Contact</a>
+          </div>
+      </div>
+  </div>
+</footer>
+
+<script>
+const job_URL = "http://127.0.0.1:5003/job";
+const apply_URL = "http://127.0.0.1:5100/apply_intern";
+// const application_URL = "http://localhost:8000/api/v1/application";
+const application_URL = "http://localhost:5001/application";
+
+
+const app = Vue.createApp({
+    data() {
+        return {
+            message: "There is a problem posting data, please try again later.",
+            "jobs": [],
+            "applications":[],
+            "statuses": [],
+            statusFound: false,
+            jobID: "",
+            companyID: "",
+            applicationID: "",
+            studentID: "",
+            letter: "",
+            jobDesc: "",
+            jobName: "",
+            postDate: "",
+            deadline: "",
+            viewAllJobsError: "",
+            addListingError: "",
+            selectedJob: true,
+            listingAdded: false,
+        };
+      },
+      methods: {
+        getAllJobs(){
+          const response =
+            fetch(job_URL)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(response);
+                    if (data.code === 404) {
+                        // no job in db
+                        this.message = data.message;
+                      
+                    } else {
+                        console.log("Jobs connected")
+                        var string1 = JSON.stringify(data.data);
+                        var parsed = JSON.parse(string1);
+                        this.jobs = parsed;
+                    }
+                })
+                .catch(error => {
+                    // Errors when calling the service; such as network error, 
+                    // service offline, etc
+                    console.log(this.message + error);
+
+                })
+              },
+
+              getStatus(){
+                this.statusFound = false;
+                const response =
+                    fetch(`${application_URL}/${this.studentID}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(response);
+                            if (data.code === 404) {
+                                // no job in db
+                                this.message = data.message;
+                            
+                            } else {
+                                this.statusFound = true;
+                                console.log("Found applications")
+                                this.statuses = data.data.applications;
+                                console.log(data)
+                            }
+                        })
+                        .catch(error => {
+                            console.log(this.message + error);
+
+                        })
+                    },
+
+                    addListing () {
+                        event.preventDefault()
+                        // reset data
+                        this.listingAdded = false;
+                        this.addListingError = "";
+                        let header_json = null;
+                        let data = JSON.stringify({
+                            // "jobID": this.jobID,
+                            "companyID": this.companyID,
+                            "studentID": this.studentID,
+                            "jobID": this.jobID,
+                            "coverletter": this.letter
+                        });
+                        header_json = {"Content-type" : "application/json"};
+                                        
+                        fetch(`${apply_URL}`,
+                            {
+                                method: "POST",
+                                headers: header_json,
+                                body: data
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                // 3 cases
+                                console.log(data)
+                                result = data.data
+                                console.log(result)
+                                switch (data.code) {
+                                    case 201:
+                                        this.listingAdded = true;
+                                        break;
+                                    case 400:
+                                        this.addListingError = data.message;
+                                    case 500:
+                                        this.addListingError = data.message;
+                                        break;
+                                    default:
+                                        throw `${data.code}: ${data.message}`;
+                                }
+                            })
+                        },
+      },
+      
+      created () {
+        // on Vue instance created, load the book list
+        this.getAllJobs();
+        this.getStatus();
+        
+      }
+    });
+    const vm = app.mount('#app');
+</script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+   
+</body>
+</html>
